@@ -5,6 +5,7 @@
 #include <sstream>
 #include <limits>
 #include "FileIO.h"
+#include "BST.h"
 
 class CommandLineUI
 {

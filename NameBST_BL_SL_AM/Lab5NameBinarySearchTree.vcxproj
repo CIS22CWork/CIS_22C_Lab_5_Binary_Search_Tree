@@ -116,6 +116,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BST.h" />
     <ClInclude Include="CommandLineUI.h" />
     <ClInclude Include="FileIO.h" />
   </ItemGroup>
