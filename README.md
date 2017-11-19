@@ -9,7 +9,8 @@ Programming Problem 5 on page 491 of the book (screenshot below) :
 - Write out the listing of everyone by birthday to a different file using a breadth-first traversal mechanism.
 - Include your code source tree, input text file and the two output files in your zip upload. Only one file upload is allowed.
 - Ensure I can run the programs by changing the data in your files without having to fix your code for file locations.
-<br />Any other questions or clarifications - ask on the forum first.
+
+Any other questions or clarifications - ask on the forum first.
 
 # Outcome
 NOT GRADED
