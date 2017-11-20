@@ -33,52 +33,48 @@ void CommandLineUI::enterLoop ()
 	BST<string> *firstLastNameBST = new BST<string> ();
 	BST<string> *birthdayBST = new BST<string> ();
 	List<NodeMain*> *mainList = new List<NodeMain*> ();
-	FileIO::fileToList ("input.txt", mainList);
-	SupportBST::nameInsert (mainList, firstLastNameBST);
-	SupportBST::birthdayInsert (mainList, birthdayBST);
-
-	/*firstLastNameBST->add ("Kimberly Henley");
-	firstLastNameBST->add ("Claudette Leflore");
-	firstLastNameBST->add ("Richard Boyd");
-	firstLastNameBST->add ("Kathleen Sears");
-	firstLastNameBST->add ("Penny Dyke");
-	firstLastNameBST->add ("David Davis");
-	firstLastNameBST->print ();
-	cout << endl;
-	cout << "Nodes count: " << firstLastNameBST->nodesCount ();
-	cout << endl;
-	cout << "Height: " << firstLastNameBST->height ();
-	cout << endl;
-	cout << "Max path: ";
-	firstLastNameBST->printMaxPath ();
-	cout << endl;
-	firstLastNameBST->deleteValue ("Kimberly Henley");
-	cout << "Kimberly Henley removed: ";*/
-	firstLastNameBST->print ();
-	birthdayBST->print ();
-	/*cout << endl;
-	cout << "Claudette Leflore removed: ";
-	firstLastNameBST->deleteValue ("Claudette Leflore");
-	firstLastNameBST->print ();
-	cout << endl;
-	cout << "Richard Boyd removed: ";
-	firstLastNameBST->deleteValue ("Richard Boyd");
-	firstLastNameBST->print ();
-	cout << endl;
-	cout << "Kathleen Sears removed: ";
-	firstLastNameBST->deleteValue ("Kathleen Sears");
-	firstLastNameBST->print ();
-	cout << endl;
-	cout << "Penny Dyke removed: ";
-	firstLastNameBST->deleteValue ("Penny Dyke");
-	firstLastNameBST->print ();
-	cout << endl;
-	cout << "David Davis removed: ";
-	firstLastNameBST->deleteValue ("David Davis");
-	firstLastNameBST->print ();
-	cout << endl;*/
+	std::string inputPath;
+	cout << "Enter the path for input file: " << endl;
+	getline (cin, inputPath);
+	bool flag0 = FileIO::fileToList (inputPath, mainList);
+	if (flag0)
+	{
+		SupportBST::nameInsert (mainList, firstLastNameBST);
+		SupportBST::birthdayInsert (mainList, birthdayBST);
+		std::string firstLastNameLog = "";
+		std::string birthdayLog = "";
+		std::string firstLastNamePath, birthdayPath;
+		firstLastNameBST->visitLogPostorder (CommandLineUI::visit, firstLastNameLog);
+		birthdayBST->visitLogPostorder (CommandLineUI::visit, birthdayLog);
+		cout << "Enter the path for the First and Last Name output file: " << endl;
+		getline (cin, firstLastNamePath);
+		cout << "Enter the path for the Birthday output file: " << endl;
+		getline (cin, birthdayPath);
+		bool flag1 = FileIO::strToFile (firstLastNameLog, firstLastNamePath);
+		bool flag2 = FileIO::strToFile (birthdayLog, birthdayPath);
+		if (flag1 && flag2)
+		{
+			cout << "Output files saved successfully to: " << endl
+				<< firstLastNamePath << endl << birthdayPath << endl;
+		}
+		else
+		{
+			if (!flag1) cout << "Error: output file \"" << firstLastNamePath << "\" not found!" << endl;
+			if (!flag2) cout << "Error: output file \"" << birthdayPath << "\" not found!" << endl;
+		}
+	}
+	else
+	{
+		cout << "Error: input file \"" << inputPath << "\" not found!" << endl;
+	}
 }
 
 //******************************************************
 // operator<<        
 //******************************************************
+
+
+std::string CommandLineUI::visit (TreeNode<std::string>* node)
+{
+	return node->getValue () + "\n";
+}
