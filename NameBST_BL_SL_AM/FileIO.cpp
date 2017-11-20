@@ -34,3 +34,22 @@ bool FileIO::strToFile (std::string str, std::string filePath)
 	}
 	return flag;
 }
+
+bool FileIO::fileToList (std::string filePath, List<NodeMain*>* listPtr)
+{
+	std::string nameFirst, nameLast, birthday;
+	bool flag = false;
+	std::ifstream myFile;
+	myFile.open (filePath);
+	if (myFile.is_open ())
+	{
+		// While the file is good
+		while (myFile.good ())
+		{
+			myFile >> nameFirst >> nameLast >> birthday;
+			listPtr->push_back (new NodeMain (nameFirst, nameLast, birthday));
+		}
+		myFile.close ();
+	}
+	return flag;
+}

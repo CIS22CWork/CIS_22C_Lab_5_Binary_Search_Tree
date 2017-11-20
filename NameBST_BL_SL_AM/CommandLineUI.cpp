@@ -30,46 +30,53 @@ CommandLineUI::CommandLineUI ()
 void CommandLineUI::enterLoop ()
 {
 	cout << "Welcome to the name BST! " << endl;
-	BST<int> *bst = new BST<int> ();
-	bst->add (11);
-	bst->add (1);
-	bst->add (6);
-	bst->add (-1);
-	bst->add (-10);
-	bst->add (100);
-	bst->print ();
+	BST<string> *firstLastNameBST = new BST<string> ();
+	BST<string> *birthdayBST = new BST<string> ();
+	List<NodeMain*> *mainList = new List<NodeMain*> ();
+	FileIO::fileToList ("input.txt", mainList);
+	SupportBST::nameInsert (mainList, firstLastNameBST);
+	SupportBST::birthdayInsert (mainList, birthdayBST);
+
+	/*firstLastNameBST->add ("Kimberly Henley");
+	firstLastNameBST->add ("Claudette Leflore");
+	firstLastNameBST->add ("Richard Boyd");
+	firstLastNameBST->add ("Kathleen Sears");
+	firstLastNameBST->add ("Penny Dyke");
+	firstLastNameBST->add ("David Davis");
+	firstLastNameBST->print ();
 	cout << endl;
-	cout << "Nodes count: " << bst->nodesCount ();
+	cout << "Nodes count: " << firstLastNameBST->nodesCount ();
 	cout << endl;
-	cout << "Height: " << bst->height ();
+	cout << "Height: " << firstLastNameBST->height ();
 	cout << endl;
 	cout << "Max path: ";
-	bst->printMaxPath ();
+	firstLastNameBST->printMaxPath ();
 	cout << endl;
-	bst->deleteValue (11);
-	cout << "11 removed: ";
-	bst->print ();
+	firstLastNameBST->deleteValue ("Kimberly Henley");
+	cout << "Kimberly Henley removed: ";*/
+	firstLastNameBST->print ();
+	birthdayBST->print ();
+	/*cout << endl;
+	cout << "Claudette Leflore removed: ";
+	firstLastNameBST->deleteValue ("Claudette Leflore");
+	firstLastNameBST->print ();
 	cout << endl;
-	cout << "1 removed: ";
-	bst->deleteValue (1);
-	bst->print ();
+	cout << "Richard Boyd removed: ";
+	firstLastNameBST->deleteValue ("Richard Boyd");
+	firstLastNameBST->print ();
 	cout << endl;
-	cout << "-1 removed: ";
-	bst->deleteValue (-1);
-	bst->print ();
+	cout << "Kathleen Sears removed: ";
+	firstLastNameBST->deleteValue ("Kathleen Sears");
+	firstLastNameBST->print ();
 	cout << endl;
-	cout << "6 removed: ";
-	bst->deleteValue (6);
-	bst->print ();
+	cout << "Penny Dyke removed: ";
+	firstLastNameBST->deleteValue ("Penny Dyke");
+	firstLastNameBST->print ();
 	cout << endl;
-	cout << "-10 removed: ";
-	bst->deleteValue (-10);
-	bst->print ();
-	cout << endl;
-	cout << "100 removed: ";
-	bst->deleteValue (100);
-	bst->print ();
-	cout << endl;
+	cout << "David Davis removed: ";
+	firstLastNameBST->deleteValue ("David Davis");
+	firstLastNameBST->print ();
+	cout << endl;*/
 }
 
 //******************************************************

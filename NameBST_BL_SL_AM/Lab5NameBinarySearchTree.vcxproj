@@ -114,11 +114,18 @@
     <ClCompile Include="CommandLineUI.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NodeMain.cpp" />
+    <ClCompile Include="SupportBST.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BST.h" />
     <ClInclude Include="CommandLineUI.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeMain.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="SupportBST.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

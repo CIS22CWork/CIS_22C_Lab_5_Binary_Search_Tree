@@ -18,20 +18,20 @@ Implement your BST as a link-based ADT - you may be able to reuse your Node clas
 using namespace std;
 
 template <class T>
-class Node
+class NodeBST
 {
 private:
 	T value;
-	Node *left;
-	Node *right;
+	NodeBST *left;
+	NodeBST *right;
 public:
-	Node (T val);
-	Node (T val, Node<T> left, Node<T> right);
+	NodeBST (T val);
+	NodeBST (T val, NodeBST<T> left, NodeBST<T> right);
 	T getValue ();
-	Node<T>* getLeft ();
-	Node<T>* getRight ();
-	void addLeft (Node<T>* node);
-	void addRight (Node<T>* node);
+	NodeBST<T>* getLeft ();
+	NodeBST<T>* getRight ();
+	void addLeft (NodeBST<T>* node);
+	void addRight (NodeBST<T>* node);
 	void addValue (T val);
 };
 
@@ -40,13 +40,13 @@ class BST
 {
 
 private:
-	Node<T> *root;
-	void addHelper (Node<T> *root, T val);
-	void printHelper (Node<T> *root);
-	int nodesCountHelper (Node<T> *root);
-	int heightHelper (Node<T> *root);
-	void printMaxPathHelper (Node<T> *root);
-	bool deleteValueHelper (Node<T>* parent, Node<T>* current, T value);
+	NodeBST<T> *root;
+	void addHelper (NodeBST<T> *root, T val);
+	void printHelper (NodeBST<T> *root);
+	int nodesCountHelper (NodeBST<T> *root);
+	int heightHelper (NodeBST<T> *root);
+	void printMaxPathHelper (NodeBST<T> *root);
+	bool deleteValueHelper (NodeBST<T>* parent, NodeBST<T>* current, T value);
 
 public:
 	void add (T val);
@@ -58,13 +58,13 @@ public:
 };
 
 template <class T>
-Node<T>::Node (T val)
+NodeBST<T>::NodeBST (T val)
 {
 	value = val;
 }
 
 template <class T>
-Node<T>::Node (T val, Node<T> leftNode, Node<T> rightNode)
+NodeBST<T>::NodeBST (T val, NodeBST<T> leftNode, NodeBST<T> rightNode)
 {
 	value = val;
 	left = leftNode;
@@ -72,47 +72,47 @@ Node<T>::Node (T val, Node<T> leftNode, Node<T> rightNode)
 }
 
 template <class T>
-T Node<T>::getValue ()
+T NodeBST<T>::getValue ()
 {
 	return value;
 }
 
 template <class T>
-Node<T>* Node<T>::getLeft ()
+NodeBST<T>* NodeBST<T>::getLeft ()
 {
 	return left;
 }
 
 template <class T>
-Node<T>* Node<T>::getRight ()
+NodeBST<T>* NodeBST<T>::getRight ()
 {
 	return right;
 }
 template <class T>
-void Node<T>::addLeft (Node<T>* node)
+void NodeBST<T>::addLeft (NodeBST<T>* node)
 {
 	left = node;
 }
 template <class T>
-void Node<T>::addRight (Node<T>* node)
+void NodeBST<T>::addRight (NodeBST<T>* node)
 {
 	right = node;
 }
 
 template <class T>
-void Node<T>::addValue (T val)
+void NodeBST<T>::addValue (T val)
 {
 	value = val;
 }
 
 template <class T>
-void BST<T>::addHelper (Node<T> *root, T val)
+void BST<T>::addHelper (NodeBST<T> *root, T val)
 {
 	if (root->getValue() > val)
 	{
 		if (!root->getLeft ())
 		{
-			root->addLeft (new Node<T> (val));
+			root->addLeft (new NodeBST<T> (val));
 		}
 		else
 		{
@@ -123,7 +123,7 @@ void BST<T>::addHelper (Node<T> *root, T val)
 	{
 		if (!root->getRight ())
 		{
-			root->addRight (new Node<T> (val));
+			root->addRight (new NodeBST<T> (val));
 		}
 		else
 		{
@@ -132,7 +132,7 @@ void BST<T>::addHelper (Node<T> *root, T val)
 	}
 }
 template <class T>
-void BST<T>::printHelper (Node<T> *root)
+void BST<T>::printHelper (NodeBST<T> *root)
 {
 	if (!root) return;
 	printHelper (root->getLeft());
@@ -140,19 +140,19 @@ void BST<T>::printHelper (Node<T> *root)
 	printHelper (root->getRight ());
 }
 template <class T>
-int BST<T>::nodesCountHelper (Node<T> *root)
+int BST<T>::nodesCountHelper (NodeBST<T> *root)
 {
 	if (!root) return 0;
 	else return 1 + nodesCountHelper (root->getLeft ()) + nodesCountHelper (root->getRight ());
 }
 template <class T>
-int BST<T>::heightHelper (Node<T> *root)
+int BST<T>::heightHelper (NodeBST<T> *root)
 {
 	if (!root) return 0;
 	else return 1 + max (heightHelper (root->getLeft ()), heightHelper (root->getRight ()));
 }
 template <class T>
-void BST<T>::printMaxPathHelper (Node<T> *root)
+void BST<T>::printMaxPathHelper (NodeBST<T> *root)
 {
 	if (!root) return;
 	cout << root->getValue() << ' ';
@@ -166,14 +166,14 @@ void BST<T>::printMaxPathHelper (Node<T> *root)
 	}
 }
 template <class T>
-bool BST<T>::deleteValueHelper (Node<T>* parent, Node<T>* current, T value)
+bool BST<T>::deleteValueHelper (NodeBST<T>* parent, NodeBST<T>* current, T value)
 {
 	if (!current) return false;
 	if (current->getValue () == value)
 	{
 		if (current->getLeft () == NULL || current->getRight () == NULL)
 		{
-			Node<T>* temp = current->getLeft ();
+			NodeBST<T>* temp = current->getLeft ();
 			if (current->getRight()) temp = current->getRight ();
 			if (parent)
 			{
@@ -193,7 +193,7 @@ bool BST<T>::deleteValueHelper (Node<T>* parent, Node<T>* current, T value)
 		}
 		else
 		{
-			Node<T>* validSubs = current->getRight();
+			NodeBST<T>* validSubs = current->getRight();
 			while (validSubs->getLeft())
 			{
 				validSubs = validSubs->getLeft();
@@ -218,7 +218,7 @@ void BST<T>::add (T val)
 	}
 	else
 	{
-		root = new Node<T> (val);
+		root = new NodeBST<T> (val);
 	}
 }
 template <class T>
