@@ -2,7 +2,7 @@
 Branden Lee and Alex Morfin
 CIS 22C
 Fall 2017
-Lab 2
+Lab 5
 
 Used Microsoft Visual Studio 2017
 
