@@ -1,8 +1,8 @@
 /*
-Branden Lee, Stephen Lee, and Alex Morfin
+Branden Lee and Alex Morfin
 CIS 22C
 Fall 2017
-Lab 2b
+Lab 5
 
 Used Microsoft Visual Studio 2017
 

@@ -1,5 +1,5 @@
 /*
-Branden Lee, Stephen Lee, and Alex Morfin
+Branden Lee and Alex Morfin
 CIS 22C
 Fall 2017
 Lab 5
