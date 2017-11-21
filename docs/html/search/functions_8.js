@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['pop_5fback',['pop_back',['../class_list.html#aa6ff98e23b4ceea509e3a29fa5ceecd7',1,'List']]],
-  ['pop_5ffront',['pop_front',['../class_list.html#a60579fbdaaceccb61aa5d8e33224e045',1,'List']]],
-  ['push_5fback',['push_back',['../class_list.html#adef1cfd54ad3f25eb27acde794e7f279',1,'List']]],
-  ['push_5ffront',['push_front',['../class_list.html#a7ad16a889175f6bbb32aeb295c8f30c3',1,'List']]]
+  ['insert',['insert',['../class_b_s_t.html#a69e01758890117297b34b79317c7c112',1,'BST::insert()'],['../class_list.html#a9c20ddd34151f1fdf67549f3c94364da',1,'List::insert()']]]
 ];

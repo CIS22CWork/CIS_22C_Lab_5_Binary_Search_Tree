@@ -7,6 +7,9 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_b_s_t_a526d4abc3bd006d96953cb685543b4a8}\label{class_b_s_t_a526d4abc3bd006d96953cb685543b4a8}} 
+{\bfseries B\+ST} (\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$list, T($\ast$access)(N $\ast$node))
+\item 
 void \hyperlink{class_b_s_t_afc990532c54fba36b8501836b1834ac6}{add} (N $\ast$val, T($\ast$access)(N $\ast$))
 \item 
 void \hyperlink{class_b_s_t_a831b6fdcda13b7a353e03992b9c965b7}{visit\+Log\+Postorder} (std\+::string($\ast$visit)(N $\ast$), std\+::string \&log)
@@ -19,17 +22,13 @@ void \hyperlink{class_b_s_t_a3e958de8a85c1268b11006a3ed32a7bb}{visit\+Log\+Bread
 \item 
 int \hyperlink{class_b_s_t_a86fb81e20a21ef65e2b57e55d910d875}{nodes\+Count} ()
 \item 
-\mbox{\Hypertarget{class_b_s_t_a84bfd35b9fdf74574ffcac8b33a129b3}\label{class_b_s_t_a84bfd35b9fdf74574ffcac8b33a129b3}} 
-int {\bfseries height} ()
+int \hyperlink{class_b_s_t_a84bfd35b9fdf74574ffcac8b33a129b3}{height} ()
 \item 
-\mbox{\Hypertarget{class_b_s_t_abd50732adeb88dbb562a640d06a0c25f}\label{class_b_s_t_abd50732adeb88dbb562a640d06a0c25f}} 
-void {\bfseries print\+Max\+Path} ()
+void \hyperlink{class_b_s_t_abd50732adeb88dbb562a640d06a0c25f}{print\+Max\+Path} ()
 \item 
-\mbox{\Hypertarget{class_b_s_t_a7490ec3a95cd5a9db735b3a2e7023baf}\label{class_b_s_t_a7490ec3a95cd5a9db735b3a2e7023baf}} 
-bool {\bfseries delete\+Value} (T value)
+bool \hyperlink{class_b_s_t_a88f2c430e8212991efdb6f28d30a7f8c}{delete\+Value} (T value, T($\ast$access)(N $\ast$))
 \item 
-\mbox{\Hypertarget{class_b_s_t_a69e01758890117297b34b79317c7c112}\label{class_b_s_t_a69e01758890117297b34b79317c7c112}} 
-bool {\bfseries insert} (\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$list, T($\ast$access)(N $\ast$node))
+bool \hyperlink{class_b_s_t_a69e01758890117297b34b79317c7c112}{insert} (\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$list, T($\ast$access)(N $\ast$node))
 \end{DoxyCompactItemize}
 
 
@@ -71,6 +70,68 @@ places data node N into the tree
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a88f2c430e8212991efdb6f28d30a7f8c}\label{class_b_s_t_a88f2c430e8212991efdb6f28d30a7f8c}} 
+\index{B\+ST@{B\+ST}!delete\+Value@{delete\+Value}}
+\index{delete\+Value@{delete\+Value}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{delete\+Value()}{deleteValue()}}
+{\footnotesize\ttfamily template$<$class T , class N $>$ \\
+bool \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::delete\+Value (\begin{DoxyParamCaption}\item[{T}]{value,  }\item[{T($\ast$)(N $\ast$)}]{access }\end{DoxyParamCaption})}
+
+deletes the matching data node attribute \begin{DoxyPrecond}{Precondition}
+root node exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+node removed from tree 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the data node attribute of type T \\
+\hline
+{\em access} & the data node accessor method \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success, false on failure or not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a84bfd35b9fdf74574ffcac8b33a129b3}\label{class_b_s_t_a84bfd35b9fdf74574ffcac8b33a129b3}} 
+\index{B\+ST@{B\+ST}!height@{height}}
+\index{height@{height}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{height()}{height()}}
+{\footnotesize\ttfamily template$<$class T , class N $>$ \\
+int \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+returns the max height of the tree \begin{DoxyPrecond}{Precondition}
+root node exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+None 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+height of longest branch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_a69e01758890117297b34b79317c7c112}\label{class_b_s_t_a69e01758890117297b34b79317c7c112}} 
+\index{B\+ST@{B\+ST}!insert@{insert}}
+\index{insert@{insert}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T , class N $>$ \\
+bool \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::insert (\begin{DoxyParamCaption}\item[{\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$}]{list,  }\item[{T($\ast$)(N $\ast$node)}]{access }\end{DoxyParamCaption})}
+
+inserts a list into the \hyperlink{class_b_s_t}{B\+ST} \begin{DoxyPrecond}{Precondition}
+list is not empty 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+list nodes added to \hyperlink{class_b_s_t}{B\+ST} 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em list} & the list of data nodes \\
+\hline
+{\em access} & the data node accessor method \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success, false on failure or not found 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_b_s_t_a86fb81e20a21ef65e2b57e55d910d875}\label{class_b_s_t_a86fb81e20a21ef65e2b57e55d910d875}} 
 \index{B\+ST@{B\+ST}!nodes\+Count@{nodes\+Count}}
 \index{nodes\+Count@{nodes\+Count}!B\+ST@{B\+ST}}
@@ -86,6 +147,22 @@ None
 \end{DoxyPostcond}
 \begin{DoxyReturn}{Returns}
 number of nodes in tree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_b_s_t_abd50732adeb88dbb562a640d06a0c25f}\label{class_b_s_t_abd50732adeb88dbb562a640d06a0c25f}} 
+\index{B\+ST@{B\+ST}!print\+Max\+Path@{print\+Max\+Path}}
+\index{print\+Max\+Path@{print\+Max\+Path}!B\+ST@{B\+ST}}
+\subsubsection{\texorpdfstring{print\+Max\+Path()}{printMaxPath()}}
+{\footnotesize\ttfamily template$<$class T , class N $>$ \\
+void \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::print\+Max\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+prints the longest branch \begin{DoxyPrecond}{Precondition}
+root node exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints branch to standard out 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+None 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_b_s_t_a3e958de8a85c1268b11006a3ed32a7bb}\label{class_b_s_t_a3e958de8a85c1268b11006a3ed32a7bb}} 
 \index{B\+ST@{B\+ST}!visit\+Log\+Breadth\+First@{visit\+Log\+Breadth\+First}}

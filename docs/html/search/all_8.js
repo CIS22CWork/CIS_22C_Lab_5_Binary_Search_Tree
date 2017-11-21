@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['nameaccess',['nameAccess',['../class_command_line_u_i.html#afaceee7574a4ed29efc107e2ab2c9087',1,'CommandLineUI']]],
-  ['nodemain',['NodeMain',['../class_node_main.html',1,'']]],
-  ['nodescount',['nodesCount',['../class_b_s_t.html#a86fb81e20a21ef65e2b57e55d910d875',1,'BST']]]
+  ['insert',['insert',['../class_b_s_t.html#a69e01758890117297b34b79317c7c112',1,'BST::insert()'],['../class_list.html#a9c20ddd34151f1fdf67549f3c94364da',1,'List::insert()']]]
 ];
