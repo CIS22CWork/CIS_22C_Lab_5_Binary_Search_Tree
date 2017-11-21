@@ -15,7 +15,7 @@ private:
 public:
 	CommandLineUI ();
 	static void enterLoop ();
-	static std::string visit (TreeNode<std::string>* node);
+	static std::string CommandLineUI::visit (NodeMain* node);
 	static std::string CommandLineUI::nameAccess (NodeMain* node);
 	static std::string CommandLineUI::birthdayAccess (NodeMain* node);
 };

@@ -30,8 +30,8 @@ CommandLineUI::CommandLineUI ()
 void CommandLineUI::enterLoop ()
 {
 	cout << "Welcome to the name BST! " << endl;
-	BST<string> *firstLastNameBST = new BST<string> ();
-	BST<string> *birthdayBST = new BST<string> ();
+	BST<std::string, NodeMain> *firstLastNameBST = new BST<std::string, NodeMain> ();
+	BST<std::string, NodeMain> *birthdayBST = new BST<std::string, NodeMain> ();
 	List<NodeMain*> *mainList = new List<NodeMain*> ();
 	std::string inputPath;
 	cout << "Enter the path for input file: " << endl;
@@ -74,9 +74,9 @@ void CommandLineUI::enterLoop ()
 //******************************************************
 
 
-std::string CommandLineUI::visit (TreeNode<std::string>* node)
+std::string CommandLineUI::visit (NodeMain* node)
 {
-	return node->getValue ()->getName() + "" + node->getValue ()->getBirthday () + "\n";
+	return node->getName() + " " + node->getBirthday () + "\n";
 }
 
 std::string CommandLineUI::nameAccess (NodeMain* node)
