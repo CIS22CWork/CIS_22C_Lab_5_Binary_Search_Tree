@@ -28,8 +28,10 @@ private:
 	TreeNode<T, N>* left;
 	TreeNode<T, N>* right;
 public:
+	TreeNode ();
 	TreeNode (N* val);
 	TreeNode (N* val, TreeNode<T, N> left, TreeNode<T, N> right);
+	~TreeNode ();
 	N* getValue ();
 	TreeNode<T, N>* getLeft ();
 	TreeNode<T, N>* getRight ();
@@ -61,9 +63,13 @@ private:
 	int nodesCountHelper (TreeNode<T, N> *root);
 	int heightHelper (TreeNode<T, N> *root);
 	void printMaxPathHelper (TreeNode<T, N> *root);
-	bool deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value);
+	bool deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value, T (*access)(N*));
 
 public:
+	BST ();
+	BST (List<N*>* list, T (*access)(N* node));
+	~BST ();
+
 	/** adds data node N to the tree
 	@pre None
 	@post places data node N into the tree
@@ -114,15 +120,44 @@ public:
 	@post None
 	@return number of nodes in tree */
 	int nodesCount ();
+
+	/** returns the max height of the tree
+	@pre root node exists
+	@post None
+	@return height of longest branch */
 	int height ();
+
+	/** prints the longest branch
+	@pre root node exists
+	@post prints branch to standard out
+	@return None */
 	void printMaxPath ();
-	bool deleteValue (T value);
+
+	/** deletes the matching data node attribute
+	@pre root node exists
+	@post node removed from tree
+	@param value the data node attribute of type T
+	@param access the data node accessor method
+	@return true on success, false on failure or not found */
+	bool deleteValue (T value, T (*access)(N*));
+
+	/** inserts a list into the BST
+	@pre list is not empty
+	@post list nodes added to BST
+	@param list the list of data nodes
+	@param access the data node accessor method
+	@return true on success, false on failure or not found */
 	bool insert (List<N*>* list, T (*access)(N* node));
 };
 
 //******************************************************
 // TreeNode class implementation    
 //******************************************************
+
+template <class T, class N>
+TreeNode<T, N>::TreeNode ()
+{
+}
 
 template <class T, class N>
 TreeNode<T, N>::TreeNode (N* val)
@@ -136,6 +171,11 @@ TreeNode<T, N>::TreeNode (N* val, TreeNode<T, N> leftNode, TreeNode<T, N> rightN
 	value = val;
 	left = leftNode;
 	right = rightNode;
+}
+
+template <class T, class N>
+TreeNode<T, N>::~TreeNode ()
+{
 }
 
 template <class T, class N>
@@ -268,10 +308,10 @@ void BST<T, N>::printMaxPathHelper (TreeNode<T, N> *root)
 	}
 }
 template <class T, class N>
-bool BST<T, N>::deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value)
+bool BST<T, N>::deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value, T (*access)(N*))
 {
 	if (!current) return false;
-	if (current->getValue () == value)
+	if ((*access)(current->getValue ()) == value)
 	{
 		if (current->getLeft () == NULL || current->getRight () == NULL)
 		{
@@ -303,19 +343,35 @@ bool BST<T, N>::deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* curre
 			T temp = current->getValue ();
 			current->addValue (validSubs->getValue ());
 			validSubs->addValue (temp);
-			return deleteValueHelper (current, current->getRight (), temp);
+			return deleteValueHelper (current, current->getRight (), temp, access);
 		}
 		delete current;
 		return true;
 	}
-	return deleteValueHelper (current, current->getLeft (), value) ||
-		deleteValueHelper (current, current->getRight (), value);
+	return deleteValueHelper (current, current->getLeft (), value, access) ||
+		deleteValueHelper (current, current->getRight (), value, access);
 }
 
 //******************************************************
 // BST class implementation 
 // PUBLIC METHODS
 //******************************************************
+
+template <class T, class N>
+BST<T, N>::BST ()
+{
+}
+
+template <class T, class N>
+BST<T, N>::BST (List<N*>* list, T (*access)(N* node))
+{
+	insert (list, access);
+}
+
+template <class T, class N>
+BST<T, N>::~BST ()
+{
+}
 
 template <class T, class N>
 void BST<T, N>::add (N* val, T (*access)(N*))
@@ -367,9 +423,9 @@ void BST<T, N>::printMaxPath ()
 	printMaxPathHelper (this->root);
 }
 template <class T, class N>
-bool BST<T, N>::deleteValue (T value)
+bool BST<T, N>::deleteValue (T value, T (*access)(N*))
 {
-	return this->deleteValueHelper (NULL, this->root, value);
+	return this->deleteValueHelper (NULL, this->root, value, access);
 }
 
 template <class T, class N>
