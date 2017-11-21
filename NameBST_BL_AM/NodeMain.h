@@ -7,6 +7,7 @@ Lab 5
 Used Microsoft Visual Studio 2017
 
 Node Main
+The main node to store name and birthday data
 */
 
 #ifndef NODE_MAIN_H

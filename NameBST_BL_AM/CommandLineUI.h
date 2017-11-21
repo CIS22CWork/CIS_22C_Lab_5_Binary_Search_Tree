@@ -13,7 +13,6 @@ class CommandLineUI
 {
 private:
 public:
-	CommandLineUI ();
 	static void enterLoop ();
 	static std::string CommandLineUI::visit (NodeMain* node);
 	static std::string CommandLineUI::nameAccess (NodeMain* node);

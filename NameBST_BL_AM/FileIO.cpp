@@ -11,13 +11,7 @@ contains file writing methods.
 */
 
 #include "FileIO.h"
-/* Writes a string to a file with group information headers
-@pre None
-@post Creates or overwrites file to filePath with content str
-@param str contents of file
-@param filePath file to write to
-@return true on success and false on failure
-*/
+
 bool FileIO::strToFile (std::string str, std::string filePath)
 {
 	bool flag = false;
@@ -32,13 +26,6 @@ bool FileIO::strToFile (std::string str, std::string filePath)
 	return flag;
 }
 
-/* Writes a string to a file with group information headers
-@pre None
-@post Creates or overwrites file to filePath with content str
-@param str contents of file
-@param filePath file to write to
-@return true on success and false on failure
-*/
 bool FileIO::fileToList (std::string filePath, List<NodeMain*>* listPtr)
 {
 	std::string nameFirst, nameLast, birthday;

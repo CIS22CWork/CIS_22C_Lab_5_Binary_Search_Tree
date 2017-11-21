@@ -10,7 +10,20 @@
 class FileIO
 {
 public:
+	/** writes the string to the file path
+	@pre file path exists
+	@post writes to file
+	@param str data to write
+	@param filePath file path
+	@return true on success false on failure */
 	static bool strToFile (std::string str, std::string filePath);
+
+	/** parses the file as a list
+	@pre file path exists
+	@post list is appended to with new data
+	@param filePath file path
+	@param listPtr list to fill
+	@return true on success false on failure */
 	static bool fileToList (std::string filePath, List<NodeMain*>* listPtr);
 };
 #endif
