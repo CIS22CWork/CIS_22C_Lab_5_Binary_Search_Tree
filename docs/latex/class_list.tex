@@ -1,5 +1,9 @@
 \hypertarget{class_list}{}\section{List$<$ T $>$ Class Template Reference}
 \label{class_list}\index{List$<$ T $>$@{List$<$ T $>$}}
+
+
+{\ttfamily \#include $<$List.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,7 +35,7 @@ bool \hyperlink{class_list_a2be90274aca8ed14ede6d6892b4e82f1}{find} (T an\+Entry
 \item 
 T \hyperlink{class_list_a54d9d5eb688177d16ae8f33a317282a5}{get\+Value} (unsigned int position)
 \item 
-\hyperlink{class_node}{Node}$<$ T $>$ $\ast$ \hyperlink{class_list_a5def593117f99eb790be0997376d8208}{get\+Tail} ()
+\hyperlink{class_list_node}{List\+Node}$<$ T $>$ $\ast$ \hyperlink{class_list_a9d222b730d906bcf6fb0834c9c729788}{get\+Tail} ()
 \item 
 void \hyperlink{class_list_ac6c3b0e253ce3c9b90053b95769f12a9}{copy} (\hyperlink{class_list}{List}$<$ T $>$ $\ast$target)
 \item 
@@ -46,6 +50,17 @@ T {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int index)
 \mbox{\Hypertarget{class_list_a79a617fcbf0937a4ef1f1df45558dcc4}\label{class_list_a79a617fcbf0937a4ef1f1df45558dcc4}} 
 {\footnotesize template$<$class T $>$ }\\std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&foo, \hyperlink{class_list}{List}$<$ T $>$ $\ast$List\+Ptr)
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class List$<$ T $>$}
+
+A Singly Linked \hyperlink{class_list}{List} A\+DT which will be composed of one or more nodes. Implement the most common linked-\/list behaviors as explained in class -\/ new list, add anywhere, delete anywhere, find anywhere, count of items in the list, empty the list, etc. 
+\begin{DoxyParams}{Parameters}
+{\em T} & list data type \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -132,7 +147,7 @@ True if removal is successful, or false if not.
 \index{find@{find}!List@{List}}
 \subsubsection{\texorpdfstring{find()}{find()}}
 {\footnotesize\ttfamily template$<$class T $>$ \\
-bool \hyperlink{class_list}{List}$<$ T $>$\+::find (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})}
+bool \hyperlink{class_list}{List}$<$ T $>$\+::find (\begin{DoxyParamCaption}\item[{T}]{an\+Entry }\end{DoxyParamCaption})}
 
 Tests whether this list contains a given value \begin{DoxyPrecond}{Precondition}
 None. 
@@ -164,12 +179,12 @@ None
 \begin{DoxyReturn}{Returns}
 The front value 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_list_a5def593117f99eb790be0997376d8208}\label{class_list_a5def593117f99eb790be0997376d8208}} 
+\mbox{\Hypertarget{class_list_a9d222b730d906bcf6fb0834c9c729788}\label{class_list_a9d222b730d906bcf6fb0834c9c729788}} 
 \index{List@{List}!get\+Tail@{get\+Tail}}
 \index{get\+Tail@{get\+Tail}!List@{List}}
 \subsubsection{\texorpdfstring{get\+Tail()}{getTail()}}
 {\footnotesize\ttfamily template$<$class T $>$ \\
-\hyperlink{class_node}{Node}$<$ T $>$ $\ast$ \hyperlink{class_list}{List}$<$ T $>$\+::get\+Tail (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\hyperlink{class_list_node}{List\+Node}$<$ T $>$ $\ast$ \hyperlink{class_list}{List}$<$ T $>$\+::get\+Tail (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Gets the tail node \begin{DoxyPrecond}{Precondition}
 None 
@@ -277,7 +292,7 @@ True if push is successful, or false if not.
 \index{push\+\_\+front@{push\+\_\+front}!List@{List}}
 \subsubsection{\texorpdfstring{push\+\_\+front()}{push\_front()}}
 {\footnotesize\ttfamily template$<$class T $>$ \\
-bool \hyperlink{class_list}{List}$<$ T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})}
+bool \hyperlink{class_list}{List}$<$ T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{T}]{new\+Entry }\end{DoxyParamCaption})}
 
 Prepends the given element value to the front \begin{DoxyPrecond}{Precondition}
 None 
@@ -293,7 +308,7 @@ True if push is successful, or false if not.
 \index{remove@{remove}!List@{List}}
 \subsubsection{\texorpdfstring{remove()}{remove()}}
 {\footnotesize\ttfamily template$<$class T $>$ \\
-bool \hyperlink{class_list}{List}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})}
+bool \hyperlink{class_list}{List}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{T}]{an\+Entry }\end{DoxyParamCaption})}
 
 Removes the entry matching val from this list. \begin{DoxyPrecond}{Precondition}
 None. 

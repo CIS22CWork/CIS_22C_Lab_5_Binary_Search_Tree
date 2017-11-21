@@ -5,10 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-
-CommandLineUI class
-contains the presentational and interactive interface in the command line for the user.
-KEEP ALL COUT<< AND CIN>> HERE
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 #ifndef COMMAND_LINE_UI_H
 #define COMMAND_LINE_UI_H
@@ -20,6 +18,12 @@ KEEP ALL COUT<< AND CIN>> HERE
 #include "List.h"
 #include "NodeMain.h"
 #include "BST.h"
+
+/**
+@class CommandLineUI
+contains the presentational and interactive interface in the command line for the user.\n
+KEEP ALL COUT<< AND CIN>> HERE
+*/
 
 class CommandLineUI
 {

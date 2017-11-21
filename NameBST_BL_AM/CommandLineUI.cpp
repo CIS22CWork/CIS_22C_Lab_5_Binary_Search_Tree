@@ -5,11 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-USAGE DOCUMENTATION HAS BEEN MOVED TO THE HEADER
-
-CommandLineUI class
-contains the presentational and interactive interface in the command line for the user.
-KEEP ALL COUT<< AND CIN>> HERE
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 
 #include "commandLineUI.h"

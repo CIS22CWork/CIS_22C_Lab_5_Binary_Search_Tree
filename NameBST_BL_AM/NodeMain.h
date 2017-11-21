@@ -5,9 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-
-Node Main
-The main node to store name and birthday data
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 
 #ifndef NODE_MAIN_H
@@ -15,6 +14,11 @@ The main node to store name and birthday data
 
 #include <string>
 #include <sstream>
+
+/**
+@class NodeMain
+The main node to store name and birthday data
+*/
 
 class NodeMain
 {

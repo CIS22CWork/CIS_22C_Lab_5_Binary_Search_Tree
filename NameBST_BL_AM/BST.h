@@ -5,9 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-
-BST class
-Implement your BST as a link-based ADT - you may be able to reuse your Node classes from Labs 2 and 2b.
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 #ifndef BST_H
 #define BST_H
@@ -15,12 +14,12 @@ Implement your BST as a link-based ADT - you may be able to reuse your Node clas
 #include <iostream>
 #include <sstream>
 
-//******************************************************
-// TreeNode class    
-// @param T The search tree data type
-// @param N The data node containing related data including data of type T
-//******************************************************
-
+/**
+@class TreeNode
+Implement your BST as a link-based ADT - you may be able to reuse your Node classes from Labs 2 and 2b.
+@param T The search tree data type
+@param N The data node containing related data including data of type T
+*/
 template <class T, class N>
 class TreeNode
 {
@@ -39,14 +38,14 @@ public:
 	void addValue (N*);
 };
 
-//******************************************************
-// BST class
-// @param T The search tree data type
-// @param N The data node containing related data including data of type T
-//
-// constructor example:
-// BST<std::string, MyDataNode> *nameBST = new BST<std::string, MyDataNode> ();
-//******************************************************
+/**
+@class BST
+constructor example:\n
+BST<std::string, MyDataNode> *nameBST = new BST<std::string, MyDataNode> ();
+@param T The search tree data type
+@param N The data node containing related data including data of type T
+
+*/
 
 template <class T, class N>
 class BST

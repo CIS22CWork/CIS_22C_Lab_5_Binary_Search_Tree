@@ -1,5 +1,9 @@
 \hypertarget{class_b_s_t}{}\section{B\+ST$<$ T, N $>$ Class Template Reference}
 \label{class_b_s_t}\index{B\+S\+T$<$ T, N $>$@{B\+S\+T$<$ T, N $>$}}
+
+
+{\ttfamily \#include $<$B\+S\+T.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +31,20 @@ bool {\bfseries delete\+Value} (T value)
 \mbox{\Hypertarget{class_b_s_t_a69e01758890117297b34b79317c7c112}\label{class_b_s_t_a69e01758890117297b34b79317c7c112}} 
 bool {\bfseries insert} (\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$list, T($\ast$access)(N $\ast$node))
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class N$>$\newline
+class B\+S\+T$<$ T, N $>$}
+
+constructor example\+:~\newline
+B\+S\+T$<$std\+::string, My\+Data\+Node$>$ $\ast$name\+B\+ST = new B\+S\+T$<$std\+::string, My\+Data\+Node$>$ (); 
+\begin{DoxyParams}{Parameters}
+{\em T} & The search tree data type \\
+\hline
+{\em N} & The data node containing related data including data of type T \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}

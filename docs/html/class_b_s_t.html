@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: BST&lt; T, N &gt; Class Template Reference</title>
+<title>CIS22C Lab 5: BST&lt; T, N &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">CIS22C Lab 5
    </div>
+   <div id="projectbrief">Binary Search Tree</div>
   </td>
  </tr>
  </tbody>
@@ -65,6 +66,8 @@ $(function() {
 <div class="title">BST&lt; T, N &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_b_s_t_8h_source.html">BST.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -93,7 +96,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>deleteValue</b> (T va
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (<a class="el" href="class_list.html">List</a>&lt; N *&gt; *list, T(*access)(N *node))</td></tr>
 <tr class="separator:a69e01758890117297b34b79317c7c112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class T, class N&gt;<br />
+class BST&lt; T, N &gt;</h3>
+
+<p>constructor example:<br />
+BST&lt;std::string, MyDataNode&gt; *nameBST = new BST&lt;std::string, MyDataNode&gt; (); </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">T</td><td>The search tree data type </td></tr>
+    <tr><td class="paramname">N</td><td>The data node containing related data including data of type T </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afc990532c54fba36b8501836b1834ac6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc990532c54fba36b8501836b1834ac6">&#9670;&nbsp;</a></span>add()</h2>
 

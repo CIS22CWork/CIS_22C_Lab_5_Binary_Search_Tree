@@ -5,9 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-
-FileIO class
-contains file writing methods.
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 #ifndef FILE_IO_H
 #define FILE_IO_H
@@ -17,6 +16,11 @@ contains file writing methods.
 #include <fstream>
 #include "NodeMain.h"
 #include "List.h"
+
+/**
+@class FileIO
+contains file writing methods.
+*/
 
 class FileIO
 {

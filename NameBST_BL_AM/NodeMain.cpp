@@ -5,8 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-
-Node Main
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 
 #include "NodeMain.h"

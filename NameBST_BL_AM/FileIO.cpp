@@ -5,10 +5,8 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
-USAGE DOCUMENTATION HAS BEEN MOVED TO THE HEADER
-
-FileIO class
-contains file writing methods.
+Windows SDK Version: 10.0.16299.0
+USE DOXYGEN COMPLIANT DOCUMENTATION
 */
 
 #include "FileIO.h"
