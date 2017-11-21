@@ -39,13 +39,13 @@ void CommandLineUI::enterLoop ()
 	bool flag0 = FileIO::fileToList (inputPath, mainList);
 	if (flag0)
 	{
-		SupportBST::nameInsert (mainList, firstLastNameBST);
-		SupportBST::birthdayInsert (mainList, birthdayBST);
+		firstLastNameBST->insert (mainList, CommandLineUI::nameAccess);
+		birthdayBST->insert (mainList, CommandLineUI::birthdayAccess);
 		std::string firstLastNameLog = "";
 		std::string birthdayLog = "";
 		std::string firstLastNamePath, birthdayPath;
 		firstLastNameBST->visitLogPostorder (CommandLineUI::visit, firstLastNameLog);
-		birthdayBST->visitLogPostorder (CommandLineUI::visit, birthdayLog);
+		birthdayBST->visitLogBreadthFirst (CommandLineUI::visit, birthdayLog);
 		cout << "Enter the path for the First and Last Name output file: " << endl;
 		getline (cin, firstLastNamePath);
 		cout << "Enter the path for the Birthday output file: " << endl;
@@ -76,5 +76,15 @@ void CommandLineUI::enterLoop ()
 
 std::string CommandLineUI::visit (TreeNode<std::string>* node)
 {
-	return node->getValue () + "\n";
+	return node->getValue ()->getName() + "" + node->getValue ()->getBirthday () + "\n";
+}
+
+std::string CommandLineUI::nameAccess (NodeMain* node)
+{
+	return node->getName ();
+}
+
+std::string CommandLineUI::birthdayAccess (NodeMain* node)
+{
+	return node->getBirthday ();
 }

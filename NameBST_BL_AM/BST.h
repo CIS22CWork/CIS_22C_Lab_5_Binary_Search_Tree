@@ -15,25 +15,32 @@ Implement your BST as a link-based ADT - you may be able to reuse your Node clas
 #include <iostream>
 #include <math.h>
 #include <algorithm>
-using namespace std;
+
+//******************************************************
+// TreeNode class       
+//******************************************************
 
 template <class T>
 class TreeNode
 {
 private:
-	T value;
+	NodeMain* value;
 	TreeNode *left;
 	TreeNode *right;
 public:
-	TreeNode (T val);
-	TreeNode (T val, TreeNode<T> left, TreeNode<T> right);
-	T getValue ();
+	TreeNode (NodeMain* val);
+	TreeNode (NodeMain* val, TreeNode<T> left, TreeNode<T> right);
+	NodeMain* getValue ();
 	TreeNode<T>* getLeft ();
 	TreeNode<T>* getRight ();
 	void addLeft (TreeNode<T>* node);
 	void addRight (TreeNode<T>* node);
-	void addValue (T val);
+	void addValue (NodeMain*);
 };
+
+//******************************************************
+// BST class       
+//******************************************************
 
 template <class T>
 class BST
@@ -41,37 +48,42 @@ class BST
 
 private:
 	TreeNode<T> *root;
-	void addHelper (TreeNode<T> *root, T val);
+	void addHelper (TreeNode<T> *root, NodeMain* val, T (*access)(TreeNode<T>*));
 	// customizable visit an log
 	void visitLogPostorderHelper (TreeNode<T> *root, std::string (*visit)(TreeNode<T>*), std::string &log);
 	void visitLogInorderHelper (TreeNode<T> *root, std::string (*visit)(TreeNode<T>*), std::string &log);
 	void visitLogPreorderHelper (TreeNode<T> *root, std::string (*visit)(TreeNode<T>*), std::string &log);
+	void visitLogLevelHelper (TreeNode<T> *root, int level, std::string (*visit)(TreeNode<T>*), std::string &log);
 	int nodesCountHelper (TreeNode<T> *root);
 	int heightHelper (TreeNode<T> *root);
 	void printMaxPathHelper (TreeNode<T> *root);
 	bool deleteValueHelper (TreeNode<T>* parent, TreeNode<T>* current, T value);
 
 public:
-	void add (T val);
+	void add (NodeMain* val, T (*access)(TreeNode<T>*));
 	void visitLogPostorder (std::string (*visit)(TreeNode<T>*), std::string &log);
 	void visitLogInorder (std::string (*visit)(TreeNode<T>*), std::string &log);
 	void visitLogPreorder (std::string (*visit)(TreeNode<T>*), std::string &log);
+	void visitLogBreadthFirst (std::string (*visit)(TreeNode<T>*), std::string &log);
 	int nodesCount ();
 	int height ();
 	void printMaxPath ();
 	bool deleteValue (T value);
-	void printLevelOrder (TreeNode<T>* root);
-	void printGivenLevel (TreeNode<T>* root, int level);
+	bool insert (List<NodeMain*>* list, T (*access)(TreeNode<T>* node));
 };
 
+//******************************************************
+// TreeNode class implementation    
+//******************************************************
+
 template <class T>
-TreeNode<T>::TreeNode (T val)
+TreeNode<T>::TreeNode (NodeMain* val)
 {
 	value = val;
 }
 
 template <class T>
-TreeNode<T>::TreeNode (T val, TreeNode<T> leftNode, TreeNode<T> rightNode)
+TreeNode<T>::TreeNode (NodeMain* val, TreeNode<T> leftNode, TreeNode<T> rightNode)
 {
 	value = val;
 	left = leftNode;
@@ -79,7 +91,7 @@ TreeNode<T>::TreeNode (T val, TreeNode<T> leftNode, TreeNode<T> rightNode)
 }
 
 template <class T>
-T TreeNode<T>::getValue ()
+NodeMain* TreeNode<T>::getValue ()
 {
 	return value;
 }
@@ -107,15 +119,19 @@ void TreeNode<T>::addRight (TreeNode<T>* node)
 }
 
 template <class T>
-void TreeNode<T>::addValue (T val)
+void TreeNode<T>::addValue (NodeMain* val)
 {
 	value = val;
 }
 
+//******************************************************
+// BST class implementation    
+//******************************************************
+
 template <class T>
-void BST<T>::addHelper (TreeNode<T> *root, T val)
+void BST<T>::addHelper (TreeNode<T> *root, NodeMain* val, T (*access)(TreeNode<T>*))
 {
-	if (root->getValue() > val)
+	if ((*access)(root->getValue ()) > (*access)(val))
 	{
 		if (!root->getLeft ())
 		{
@@ -123,7 +139,7 @@ void BST<T>::addHelper (TreeNode<T> *root, T val)
 		}
 		else
 		{
-			addHelper (root->getLeft (), val);
+			addHelper (root->getLeft (), val, access);
 		}
 	}
 	else
@@ -134,7 +150,7 @@ void BST<T>::addHelper (TreeNode<T> *root, T val)
 		}
 		else
 		{
-			addHelper (root->getRight (), val);
+			addHelper (root->getRight (), val, access);
 		}
 	}
 }
@@ -142,7 +158,7 @@ template <class T>
 void BST<T>::visitLogPostorderHelper (TreeNode<T> *root, std::string (*visit)(TreeNode<T>*), std::string &log)
 {
 	if (!root) return;
-	visitLogPostorderHelper (root->getLeft(), visit, log);
+	visitLogPostorderHelper (root->getLeft (), visit, log);
 	visitLogPostorderHelper (root->getRight (), visit, log);
 	// call custom visit method and append output to log
 	log += (*visit)(root);
@@ -167,6 +183,21 @@ void BST<T>::visitLogPreorderHelper (TreeNode<T> *root, std::string (*visit)(Tre
 	visitLogPreorderHelper (root->getLeft (), visit, log);
 	visitLogPreorderHelper (root->getRight (), visit, log);
 }
+
+template <class T>
+void BST<T>::visitLogLevelHelper (TreeNode<T> *root, int level, std::string (*visit)(TreeNode<T>*), std::string &log)
+{
+	if (!root)
+		return;
+	if (level == 1)
+		log += (*visit)(root);
+	else if (level > 1)
+	{
+		visitLogLevelHelper (root->getLeft (), level - 1, visit, log);
+		visitLogLevelHelper (root->getRight (), level - 1, visit, log);
+	}
+}
+
 template <class T>
 int BST<T>::nodesCountHelper (TreeNode<T> *root)
 {
@@ -183,7 +214,7 @@ template <class T>
 void BST<T>::printMaxPathHelper (TreeNode<T> *root)
 {
 	if (!root) return;
-	cout << root->getValue() << ' ';
+	cout << root->getValue () << ' ';
 	if (heightHelper (root->getLeft ()) > heightHelper (root->getRight ()))
 	{
 		printMaxPathHelper (root->getLeft ());
@@ -202,10 +233,10 @@ bool BST<T>::deleteValueHelper (TreeNode<T>* parent, TreeNode<T>* current, T val
 		if (current->getLeft () == NULL || current->getRight () == NULL)
 		{
 			TreeNode<T>* temp = current->getLeft ();
-			if (current->getRight()) temp = current->getRight ();
+			if (current->getRight ()) temp = current->getRight ();
 			if (parent)
 			{
-				if (parent->getLeft() == current)
+				if (parent->getLeft () == current)
 				{
 					parent->addLeft (temp);
 				}
@@ -221,28 +252,28 @@ bool BST<T>::deleteValueHelper (TreeNode<T>* parent, TreeNode<T>* current, T val
 		}
 		else
 		{
-			TreeNode<T>* validSubs = current->getRight();
-			while (validSubs->getLeft())
+			TreeNode<T>* validSubs = current->getRight ();
+			while (validSubs->getLeft ())
 			{
-				validSubs = validSubs->getLeft();
+				validSubs = validSubs->getLeft ();
 			}
-			T temp = current->getValue();
+			T temp = current->getValue ();
 			current->addValue (validSubs->getValue ());
 			validSubs->addValue (temp);
-			return deleteValueHelper (current, current->getRight(), temp);
+			return deleteValueHelper (current, current->getRight (), temp);
 		}
 		delete current;
 		return true;
 	}
-	return deleteValueHelper (current, current->getLeft(), value) ||
-		deleteValueHelper (current, current->getRight(), value);
+	return deleteValueHelper (current, current->getLeft (), value) ||
+		deleteValueHelper (current, current->getRight (), value);
 }
 template <class T>
-void BST<T>::add (T val)
+void BST<T>::add (NodeMain* val, T (*access)(TreeNode<T>*))
 {
 	if (root)
 	{
-		this->addHelper (root, val);
+		this->addHelper (root, val, access);
 	}
 	else
 	{
@@ -269,6 +300,15 @@ void BST<T>::visitLogPreorder (std::string (*visit)(TreeNode<T>*), std::string &
 }
 
 template <class T>
+void BST<T>::visitLogBreadthFirst (std::string (*visit)(TreeNode<T>*), std::string &log)
+{
+	int h = heightHelper (this->root);
+	int i;
+	for (i = 1; i <= h; i++)
+		visitLogLevelHelper (this->root, i, visit, log);
+}
+
+template <class T>
 int BST<T>::nodesCount ()
 {
 	return nodesCountHelper (root);
@@ -290,26 +330,14 @@ bool BST<T>::deleteValue (T value)
 }
 
 template <class T>
-void BST<T>::printLevelOrder (TreeNode<T>* root)
+bool BST<T>::insert (List<NodeMain*>* list, T (*access)(TreeNode<T>* node))
 {
-	int h = heightHelper (root);
-	int i;
-	for (i = 1; i <= h; i++)
-		printGivenLevel (root, i);
-}
-
-template <class T>
-void BST<T>::printGivenLevel (TreeNode<T>* root, int level)
-{
-	if (root == NULL)
-		return;
-	if (level == 1)
-		std::cout << root->value;
-	else if (level > 1)
+	bool flag = false;
+	int n = list->size ();
+	for (int i = 0; i < n; i++)
 	{
-		printGivenLevel (root->left, level - 1);
-		printGivenLevel (root->right, level - 1);
+		add ((*list)[i], access);
 	}
+	return flag;
 }
-
 #endif

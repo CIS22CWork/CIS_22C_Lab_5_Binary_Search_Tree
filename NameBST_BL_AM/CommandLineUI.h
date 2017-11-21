@@ -8,7 +8,6 @@
 #include "List.h"
 #include "NodeMain.h"
 #include "BST.h"
-#include "SupportBST.h"
 
 class CommandLineUI
 {
@@ -17,6 +16,8 @@ public:
 	CommandLineUI ();
 	static void enterLoop ();
 	static std::string visit (TreeNode<std::string>* node);
+	static std::string CommandLineUI::nameAccess (NodeMain* node);
+	static std::string CommandLineUI::birthdayAccess (NodeMain* node);
 };
 
 #endif
