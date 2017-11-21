@@ -5,6 +5,7 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
+USAGE DOCUMENTATION HAS BEEN MOVED TO THE HEADER
 
 FileIO class
 contains file writing methods.

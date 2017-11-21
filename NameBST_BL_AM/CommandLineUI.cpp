@@ -5,6 +5,7 @@ Fall 2017
 Lab 5
 
 Used Microsoft Visual Studio 2017
+USAGE DOCUMENTATION HAS BEEN MOVED TO THE HEADER
 
 CommandLineUI class
 contains the presentational and interactive interface in the command line for the user.
@@ -15,10 +16,6 @@ KEEP ALL COUT<< AND CIN>> HERE
 
 using namespace std;
 
-/** menu entry point for the program
-@pre None
-@post menu
-@return None */
 void CommandLineUI::enterLoop ()
 {
 	// welcome and setup
@@ -68,6 +65,7 @@ void CommandLineUI::enterLoop ()
 
 std::string CommandLineUI::visit (NodeMain* node)
 {
+	// string stream would also work for non-string data
 	std::stringstream ss;
 	ss << node->getName () << " " << node->getBirthday () << std::endl;
 	return ss.str ();

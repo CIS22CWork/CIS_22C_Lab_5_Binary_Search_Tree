@@ -1,0 +1,62 @@
+\hypertarget{class_file_i_o}{}\section{File\+IO Class Reference}
+\label{class_file_i_o}\index{File\+IO@{File\+IO}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_file_i_o_ac3a2546c33e52aab6f4b9376d5c41d5e}{str\+To\+File} (std\+::string str, std\+::string file\+Path)
+\item 
+static bool \hyperlink{class_file_i_o_a7ef3f816ce047c60c887c38f3a9717d7}{file\+To\+List} (std\+::string file\+Path, \hyperlink{class_list}{List}$<$ \hyperlink{class_node_main}{Node\+Main} $\ast$$>$ $\ast$list\+Ptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_file_i_o_a7ef3f816ce047c60c887c38f3a9717d7}\label{class_file_i_o_a7ef3f816ce047c60c887c38f3a9717d7}} 
+\index{File\+IO@{File\+IO}!file\+To\+List@{file\+To\+List}}
+\index{file\+To\+List@{file\+To\+List}!File\+IO@{File\+IO}}
+\subsubsection{\texorpdfstring{file\+To\+List()}{fileToList()}}
+{\footnotesize\ttfamily bool File\+I\+O\+::file\+To\+List (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Path,  }\item[{\hyperlink{class_list}{List}$<$ \hyperlink{class_node_main}{Node\+Main} $\ast$$>$ $\ast$}]{list\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+parses the file as a list \begin{DoxyPrecond}{Precondition}
+file path exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+list is appended to with new data 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & file path \\
+\hline
+{\em list\+Ptr} & list to fill \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success false on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_file_i_o_ac3a2546c33e52aab6f4b9376d5c41d5e}\label{class_file_i_o_ac3a2546c33e52aab6f4b9376d5c41d5e}} 
+\index{File\+IO@{File\+IO}!str\+To\+File@{str\+To\+File}}
+\index{str\+To\+File@{str\+To\+File}!File\+IO@{File\+IO}}
+\subsubsection{\texorpdfstring{str\+To\+File()}{strToFile()}}
+{\footnotesize\ttfamily bool File\+I\+O\+::str\+To\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{str,  }\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+writes the string to the file path \begin{DoxyPrecond}{Precondition}
+file path exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+writes to file 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em str} & data to write \\
+\hline
+{\em file\+Path} & file path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success false on failure 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/school\+Code/\+Lab5\+Name\+Binary\+Search\+Tree/\+Name\+B\+S\+T\+\_\+\+B\+L\+\_\+\+A\+M/File\+I\+O.\+h\item 
+F\+:/school\+Code/\+Lab5\+Name\+Binary\+Search\+Tree/\+Name\+B\+S\+T\+\_\+\+B\+L\+\_\+\+A\+M/File\+I\+O.\+cpp\end{DoxyCompactItemize}

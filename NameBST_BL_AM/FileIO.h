@@ -1,3 +1,14 @@
+/*
+Branden Lee and Alex Morfin
+CIS 22C
+Fall 2017
+Lab 5
+
+Used Microsoft Visual Studio 2017
+
+FileIO class
+contains file writing methods.
+*/
 #ifndef FILE_IO_H
 #define FILE_IO_H
 

@@ -54,6 +54,7 @@ public:
 
 	template <class T>
 	friend std::ostream& operator<< (std::ostream &foo, List<T> *ListPtr);
+	// subscript access non-standard.
 	T operator[] (const int index);
 };
 
