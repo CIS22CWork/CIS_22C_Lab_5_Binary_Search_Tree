@@ -39,19 +39,19 @@ public:
 	@pre None
 	@post None
 	@return data string */
-	static std::string CommandLineUI::visit (NodeMain* node);
+	static std::string CommandLineUI::visit (NodeMain* nodePtr);
 
 	/** visits the data node and returns the name
 	@pre None
 	@post None
 	@return name string in form FIRST LAST */
-	static std::string CommandLineUI::nameAccess (NodeMain* node);
+	static std::string CommandLineUI::nameAccess (NodeMain* nodePtr);
 
 	/** visits the data node and returns the birthday
 	@pre None
 	@post None
 	@return birthday string in form YYYY-MM-DD */
-	static std::string CommandLineUI::birthdayAccess (NodeMain* node);
+	static std::string CommandLineUI::birthdayAccess (NodeMain* nodePtr);
 };
 
 #endif

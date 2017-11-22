@@ -55,19 +55,20 @@ class BST
 
 private:
 	TreeNode<T, N> *root;
-	void addHelper (TreeNode<T, N> *root, NodeMain* val, T (*access)(N*));
+	void addHelper (TreeNode<T, N> *root, N* val, T (*access)(N*));
 	void visitLogPostorderHelper (TreeNode<T, N> *root, std::string (*visit)(N*), std::string &log);
 	void visitLogInorderHelper (TreeNode<T, N> *root, std::string (*visit)(N*), std::string &log);
 	void visitLogPreorderHelper (TreeNode<T, N> *root, std::string (*visit)(N*), std::string &log);
 	void visitLogLevelHelper (TreeNode<T, N> *root, int level, std::string (*visit)(N*), std::string &log);
 	int nodesCountHelper (TreeNode<T, N> *root);
 	int heightHelper (TreeNode<T, N> *root);
-	void printMaxPathHelper (TreeNode<T, N> *root);
-	bool deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value, T (*access)(N*));
+	void MaxPathNodesHelper (TreeNode<T, N> *root, List<N*>* listPtr);
+	bool removeHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value, T (*access)(N*));
+	void findHelper (TreeNode<T, N>* current, T value, List<N*>* listPtr, T (*access)(N*), int &operations);
 
 public:
 	BST ();
-	BST (List<N*>* list, T (*access)(N* node));
+	BST (List<N*>* listPtr, T (*access)(N* node));
 	~BST ();
 
 	/** adds data node N to the tree
@@ -127,11 +128,14 @@ public:
 	@return height of longest branch */
 	int height ();
 
-	/** prints the longest branch
+	/** inserts the data nodes of the longest branch
+	into the list
 	@pre root node exists
-	@post prints branch to standard out
-	@return None */
-	void printMaxPath ();
+	@post None
+	@param list the list of result data nodes
+	@return None
+	*/
+	void MaxPathNodes (List<N*>* list);
 
 	/** deletes the matching data node attribute
 	@pre root node exists
@@ -139,7 +143,7 @@ public:
 	@param value the data node attribute of type T
 	@param access the data node accessor method
 	@return true on success, false on failure or not found */
-	bool deleteValue (T value, T (*access)(N*));
+	bool remove (T value, T (*access)(N*));
 
 	/** inserts a list into the BST
 	@pre list is not empty
@@ -147,7 +151,27 @@ public:
 	@param list the list of data nodes
 	@param access the data node accessor method
 	@return true on success, false on failure or not found */
-	bool insert (List<N*>* list, T (*access)(N* node));
+	bool insert (List<N*>* listPtr, T (*access)(N* node));
+
+	/** finds the matching data node attribute
+	and pushes the data node into the list
+	@pre root node exists
+	@post data nodes pushed into list
+	@param value the data node attribute of type T
+	@param list the list of result data nodes
+	@param access the data node accessor method
+	@return true on success, false on failure or not found */
+	bool find (T value, List<N*>* listPtr, T (*access)(N*));
+
+	/** finds the matching data node attribute
+	and pushes the data node into the list
+	@pre root node exists
+	@post data nodes pushed into list
+	@param value the data node attribute of type T
+	@param list the list of result data nodes
+	@param access the data node accessor method
+	@return true on success, false on failure or not found */
+	bool find (T value, List<N*>* listPtr, T (*access)(N*), int &operations);
 };
 
 //******************************************************
@@ -218,15 +242,17 @@ void TreeNode<T, N>::addValue (N* val)
 //******************************************************
 
 template <class T, class N>
-void BST<T, N>::addHelper (TreeNode<T, N> *root, NodeMain* val, T (*access)(N*))
+void BST<T, N>::addHelper (TreeNode<T, N> *root, N* val, T (*access)(N*))
 {
 	if ((*access)(root->getValue ()) > (*access)(val))
 	{
+		// val less than root to the left
 		if (!root->getLeft ()) root->addLeft (new TreeNode<T, N> (val));
 		else addHelper (root->getLeft (), val, access);
 	}
 	else
 	{
+		// val greater or equal to root to the right
 		if (!root->getRight ()) root->addRight (new TreeNode<T, N> (val));
 		else addHelper (root->getRight (), val, access);
 	}
@@ -294,21 +320,17 @@ int BST<T, N>::heightHelper (TreeNode<T, N> *root)
 }
 
 template <class T, class N>
-void BST<T, N>::printMaxPathHelper (TreeNode<T, N> *root)
+void BST<T, N>::MaxPathNodesHelper (TreeNode<T, N> *root, List<N*>* listPtr)
 {
 	if (!root) return;
-	cout << root->getValue () << ' ';
+	listPtr->push_back (root->getValue ());
 	if (heightHelper (root->getLeft ()) > heightHelper (root->getRight ()))
-	{
-		printMaxPathHelper (root->getLeft ());
-	}
+		MaxPathNodesHelper (root->getLeft (), listPtr);
 	else
-	{
-		printMaxPathHelper (root->getRight ());
-	}
+		MaxPathNodesHelper (root->getRight (), listPtr);
 }
 template <class T, class N>
-bool BST<T, N>::deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value, T (*access)(N*))
+bool BST<T, N>::removeHelper (TreeNode<T, N>* parent, TreeNode<T, N>* current, T value, T (*access)(N*))
 {
 	if (!current) return false;
 	if ((*access)(current->getValue ()) == value)
@@ -340,16 +362,41 @@ bool BST<T, N>::deleteValueHelper (TreeNode<T, N>* parent, TreeNode<T, N>* curre
 			{
 				validSubs = validSubs->getLeft ();
 			}
-			T temp = current->getValue ();
+			N* temp = current->getValue ();
 			current->addValue (validSubs->getValue ());
 			validSubs->addValue (temp);
-			return deleteValueHelper (current, current->getRight (), temp, access);
+			return removeHelper (current, current->getRight (), (*access)(temp), access);
 		}
 		delete current;
 		return true;
 	}
-	return deleteValueHelper (current, current->getLeft (), value, access) ||
-		deleteValueHelper (current, current->getRight (), value, access);
+	return removeHelper (current, current->getLeft (), value, access) ||
+		removeHelper (current, current->getRight (), value, access);
+}
+
+template <class T, class N>
+void BST<T, N>::findHelper (TreeNode<T, N>* current, T value, List<N*>* listPtr, T (*access)(N*), int &operations)
+{
+	/*
+	searches the normal add path to find matching values
+	list will be empty if no matches found assuming list was
+	empty in the beginning
+	*/
+	if (!current) return;
+	if ((*access)(current->getValue ()) == value)
+		listPtr->push_back (current->getValue ());
+	if ((*access)(current->getValue ()) > value)
+	{
+		// val less than root to the left
+		operations++;
+		findHelper (current->getLeft (), value, listPtr, access, operations);
+	}
+	else
+	{
+		// val greater or equal to root to the right
+		operations++;
+		findHelper (current->getRight (), value, listPtr, access, operations);
+	}
 }
 
 //******************************************************
@@ -363,9 +410,9 @@ BST<T, N>::BST ()
 }
 
 template <class T, class N>
-BST<T, N>::BST (List<N*>* list, T (*access)(N* node))
+BST<T, N>::BST (List<N*>* listPtr, T (*access)(N* node))
 {
-	insert (list, access);
+	insert (listPtr, access);
 }
 
 template <class T, class N>
@@ -418,25 +465,48 @@ int BST<T, N>::height ()
 	return heightHelper (this->root);
 }
 template <class T, class N>
-void BST<T, N>::printMaxPath ()
+void BST<T, N>::MaxPathNodes (List<N*>* list)
 {
-	printMaxPathHelper (this->root);
-}
-template <class T, class N>
-bool BST<T, N>::deleteValue (T value, T (*access)(N*))
-{
-	return this->deleteValueHelper (NULL, this->root, value, access);
+	MaxPathNodesHelper (this->root, list);
 }
 
 template <class T, class N>
-bool BST<T, N>::insert (List<N*>* list, T (*access)(N* node))
+bool BST<T, N>::remove (T value, T (*access)(N*))
+{
+	return this->removeHelper (NULL, this->root, value, access);
+}
+
+template <class T, class N>
+bool BST<T, N>::insert (List<N*>* listPtr, T (*access)(N* node))
 {
 	bool flag = false;
-	int n = list->size ();
+	int n = listPtr->size ();
 	for (int i = 0; i < n; i++)
 	{
-		add ((*list)[i], access);
+		add ((*listPtr)[i], access);
 	}
+	return flag;
+}
+
+template <class T, class N>
+bool BST<T, N>::find (T value, List<N*>* listPtr, T (*access)(N*))
+{
+	int operations = 0;
+	bool flag = false;
+	this->findHelper (this->root, value, listPtr, access, operations);
+	operations = 2 + operations;
+	if (!listPtr->empty ()) flag = true;
+	return flag;
+}
+
+template <class T, class N>
+bool BST<T, N>::find (T value, List<N*>* listPtr, T (*access)(N*), int &operations)
+{
+	operations = 0;
+	bool flag = false;
+	this->findHelper (this->root, value, listPtr, access, operations);
+	operations = 2 + operations;
+	if (!listPtr->empty ()) flag = true;
 	return flag;
 }
 #endif

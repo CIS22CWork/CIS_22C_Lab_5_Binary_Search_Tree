@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['list',['List',['../class_list.html',1,'']]],
-  ['listnode',['ListNode',['../class_list_node.html',1,'']]]
+  ['maxpathnodes',['MaxPathNodes',['../class_b_s_t.html#a8ef035f46b23dbe48acf2e23a755eb83',1,'BST']]]
 ];

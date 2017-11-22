@@ -31,5 +31,7 @@ public:
 	~NodeMain ();
 	std::string getName ();
 	std::string getBirthday ();
+
+	friend std::ostream& operator<< (std::ostream &foo, NodeMain *NodePtr);
 };
 #endif

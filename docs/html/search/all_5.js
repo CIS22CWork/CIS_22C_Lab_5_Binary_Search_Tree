@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['fileio',['FileIO',['../class_file_i_o.html',1,'']]],
-  ['filetolist',['fileToList',['../class_file_i_o.html#a7ef3f816ce047c60c887c38f3a9717d7',1,'FileIO']]],
-  ['find',['find',['../class_list.html#a2be90274aca8ed14ede6d6892b4e82f1',1,'List']]],
-  ['front',['front',['../class_list.html#a2606aeb0b00885fd7b3037a29ae28c8b',1,'List']]]
+  ['gettail',['getTail',['../class_list.html#a9d222b730d906bcf6fb0834c9c729788',1,'List']]],
+  ['getvalue',['getValue',['../class_list.html#a54d9d5eb688177d16ae8f33a317282a5',1,'List']]]
 ];
