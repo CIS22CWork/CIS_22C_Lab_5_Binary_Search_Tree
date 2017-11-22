@@ -106,16 +106,12 @@ std::string CommandLineUI::visit (NodeMain* nodePtr)
 
 std::string CommandLineUI::nameAccess (NodeMain* nodePtr)
 {
-	std::stringstream ss;
-	ss << nodePtr->getName ();
-	return ss.str ();
+	return nodePtr->getName ();
 }
 
 std::string CommandLineUI::birthdayAccess (NodeMain* nodePtr)
 {
-	std::stringstream ss;
-	ss << nodePtr->getBirthday ();
-	return ss.str ();
+	return nodePtr->getBirthday ();
 }
 
 //******************************************************
