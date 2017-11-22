@@ -11,11 +11,14 @@ USE DOXYGEN COMPLIANT DOCUMENTATION
 
 /**
 @mainpage Binary Search Tree Example
-Prompts user for a file with names and birthdays delimitted by newlines.
+Prompts user for a file with alternating names and birthdays delimitted by newlines.
 For example:\n\n
-Kimberly Henley 1971-06-12\n
-Claudette Leflore 1959-07-12\n
-Richard Boyd 1987-07-10\n\n
+Kimberly Henley\n
+1971-06-12\n
+Claudette Leflore\n
+1959-07-12\n
+Richard Boyd\n
+1987-07-10\n\n
 Uses a two different binary search trees for names and birthdays. 
 After constructing the BST, the user is promted for the output file
 for 

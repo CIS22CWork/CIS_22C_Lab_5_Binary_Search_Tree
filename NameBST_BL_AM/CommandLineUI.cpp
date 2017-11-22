@@ -100,7 +100,7 @@ std::string CommandLineUI::visit (NodeMain* nodePtr)
 {
 	// string stream would also work for non-string data
 	std::stringstream ss;
-	ss << nodePtr->getName () << " " << nodePtr->getBirthday () << std::endl;
+	ss << nodePtr->getName () << std::endl << nodePtr->getBirthday () << std::endl;
 	return ss.str ();
 }
 
