@@ -132,10 +132,10 @@ public:
 	into the list
 	@pre root node exists
 	@post None
-	@param list the list of result data nodes
+	@param listPtr the list of result data nodes
 	@return None
 	*/
-	void MaxPathNodes (List<N*>* list);
+	void MaxPathNodes (List<N*>* listPtr);
 
 	/** deletes the matching data node attribute
 	@pre root node exists
@@ -148,7 +148,7 @@ public:
 	/** inserts a list into the BST
 	@pre list is not empty
 	@post list nodes added to BST
-	@param list the list of data nodes
+	@param listPtr the list of data nodes
 	@param access the data node accessor method
 	@return true on success, false on failure or not found */
 	bool insert (List<N*>* listPtr, T (*access)(N* node));
@@ -158,18 +158,19 @@ public:
 	@pre root node exists
 	@post data nodes pushed into list
 	@param value the data node attribute of type T
-	@param list the list of result data nodes
+	@param listPtr the list of result data nodes
 	@param access the data node accessor method
 	@return true on success, false on failure or not found */
 	bool find (T value, List<N*>* listPtr, T (*access)(N*));
 
 	/** finds the matching data node attribute
-	and pushes the data node into the list
+	and pushes the data node into the list. exposes operations done.
 	@pre root node exists
 	@post data nodes pushed into list
 	@param value the data node attribute of type T
-	@param list the list of result data nodes
+	@param listPtr the list of result data nodes
 	@param access the data node accessor method
+	@param operations number of operations
 	@return true on success, false on failure or not found */
 	bool find (T value, List<N*>* listPtr, T (*access)(N*), int &operations);
 };
@@ -465,9 +466,9 @@ int BST<T, N>::height ()
 	return heightHelper (this->root);
 }
 template <class T, class N>
-void BST<T, N>::MaxPathNodes (List<N*>* list)
+void BST<T, N>::MaxPathNodes (List<N*>* listPtr)
 {
-	MaxPathNodesHelper (this->root, list);
+	MaxPathNodesHelper (this->root, listPtr);
 }
 
 template <class T, class N>

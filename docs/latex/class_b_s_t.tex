@@ -24,7 +24,7 @@ int \hyperlink{class_b_s_t_a86fb81e20a21ef65e2b57e55d910d875}{nodes\+Count} ()
 \item 
 int \hyperlink{class_b_s_t_a84bfd35b9fdf74574ffcac8b33a129b3}{height} ()
 \item 
-void \hyperlink{class_b_s_t_a8ef035f46b23dbe48acf2e23a755eb83}{Max\+Path\+Nodes} (\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$list)
+void \hyperlink{class_b_s_t_a757799b702dc9729c0b7e63b63b91647}{Max\+Path\+Nodes} (\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$list\+Ptr)
 \item 
 bool \hyperlink{class_b_s_t_aef5667b555733710dbe17aa7218e248d}{remove} (T value, T($\ast$access)(N $\ast$))
 \item 
@@ -91,7 +91,7 @@ data nodes pushed into list
 \begin{DoxyParams}{Parameters}
 {\em value} & the data node attribute of type T \\
 \hline
-{\em list} & the list of result data nodes \\
+{\em list\+Ptr} & the list of result data nodes \\
 \hline
 {\em access} & the data node accessor method \\
 \hline
@@ -106,7 +106,7 @@ true on success, false on failure or not found
 {\footnotesize\ttfamily template$<$class T , class N $>$ \\
 bool \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::find (\begin{DoxyParamCaption}\item[{T}]{value,  }\item[{\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$}]{list\+Ptr,  }\item[{T($\ast$)(N $\ast$)}]{access,  }\item[{int \&}]{operations }\end{DoxyParamCaption})}
 
-finds the matching data node attribute and pushes the data node into the list \begin{DoxyPrecond}{Precondition}
+finds the matching data node attribute and pushes the data node into the list. exposes operations done. \begin{DoxyPrecond}{Precondition}
 root node exists 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
@@ -116,9 +116,11 @@ data nodes pushed into list
 \begin{DoxyParams}{Parameters}
 {\em value} & the data node attribute of type T \\
 \hline
-{\em list} & the list of result data nodes \\
+{\em list\+Ptr} & the list of result data nodes \\
 \hline
 {\em access} & the data node accessor method \\
+\hline
+{\em operations} & number of operations \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -155,7 +157,7 @@ list nodes added to \hyperlink{class_b_s_t}{B\+ST}
 \end{DoxyPostcond}
 
 \begin{DoxyParams}{Parameters}
-{\em list} & the list of data nodes \\
+{\em list\+Ptr} & the list of data nodes \\
 \hline
 {\em access} & the data node accessor method \\
 \hline
@@ -163,12 +165,12 @@ list nodes added to \hyperlink{class_b_s_t}{B\+ST}
 \begin{DoxyReturn}{Returns}
 true on success, false on failure or not found 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_b_s_t_a8ef035f46b23dbe48acf2e23a755eb83}\label{class_b_s_t_a8ef035f46b23dbe48acf2e23a755eb83}} 
+\mbox{\Hypertarget{class_b_s_t_a757799b702dc9729c0b7e63b63b91647}\label{class_b_s_t_a757799b702dc9729c0b7e63b63b91647}} 
 \index{B\+ST@{B\+ST}!Max\+Path\+Nodes@{Max\+Path\+Nodes}}
 \index{Max\+Path\+Nodes@{Max\+Path\+Nodes}!B\+ST@{B\+ST}}
 \subsubsection{\texorpdfstring{Max\+Path\+Nodes()}{MaxPathNodes()}}
 {\footnotesize\ttfamily template$<$class T , class N $>$ \\
-void \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::Max\+Path\+Nodes (\begin{DoxyParamCaption}\item[{\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$}]{list }\end{DoxyParamCaption})}
+void \hyperlink{class_b_s_t}{B\+ST}$<$ T, N $>$\+::Max\+Path\+Nodes (\begin{DoxyParamCaption}\item[{\hyperlink{class_list}{List}$<$ N $\ast$$>$ $\ast$}]{list\+Ptr }\end{DoxyParamCaption})}
 
 inserts the data nodes of the longest branch into the list \begin{DoxyPrecond}{Precondition}
 root node exists 
@@ -178,7 +180,7 @@ None
 \end{DoxyPostcond}
 
 \begin{DoxyParams}{Parameters}
-{\em list} & the list of result data nodes \\
+{\em list\+Ptr} & the list of result data nodes \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
