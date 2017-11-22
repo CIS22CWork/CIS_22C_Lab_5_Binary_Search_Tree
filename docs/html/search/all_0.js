@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['add',['add',['../class_b_s_t.html#afc990532c54fba36b8501836b1834ac6',1,'BST']]]
+  ['instructions',['Instructions',['../md__r_e_a_d_m_e.html',1,'']]]
 ];

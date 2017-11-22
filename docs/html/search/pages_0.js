@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['binary_20search_20tree_20example',['Binary Search Tree Example',['../index.html',1,'']]]
+  ['instructions',['Instructions',['../md__r_e_a_d_m_e.html',1,'']]]
 ];
