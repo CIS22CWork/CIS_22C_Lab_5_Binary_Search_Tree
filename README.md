@@ -1,7 +1,7 @@
-De Anza College
-Manish Goel
-Fall 2017
-CIS22C Data Abstract & Structures
+De Anza College<BR>
+Manish Goel<BR>
+Fall 2017<BR>
+CIS22C Data Abstract & Structures<BR>
 
 # Instructions
 Programming Problem 5 on page 491 of the book (screenshot below) :
