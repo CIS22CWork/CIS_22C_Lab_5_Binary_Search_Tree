@@ -1,3 +1,8 @@
+De Anza College
+Manish Goel
+Fall 2017
+CIS22C Data Abstract & Structures
+
 # Instructions
 Programming Problem 5 on page 491 of the book (screenshot below) :
 
@@ -13,4 +18,4 @@ Programming Problem 5 on page 491 of the book (screenshot below) :
 Any other questions or clarifications - ask on the forum first.
 
 # Outcome
-NOT GRADED
+Full Credit
